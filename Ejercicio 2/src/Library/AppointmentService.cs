@@ -5,49 +5,29 @@ namespace Library
 {
     public class AppointmentService
     {
-        public static string CreateAppointment(string name, string id, string phoneNumber, DateTime date, string appoinmentPlace, string doctorName)
-        {
-            StringBuilder stringBuilder = new StringBuilder("Scheduling appointment...\n");
-            Boolean isValid = true;
+        string id;
+        DateTime date;
+        string place;
 
-            if (string.IsNullOrEmpty(name))
-            {
-                stringBuilder.Append("Unable to schedule appointment, 'name' is required\n");
-                isValid = false;
+        public AppointmentService(string id, DateTime date, string place){
+            this.id=id;
+            this.date=date;
+            this.place=place;
+        }
+        public string CreateAppointment(string id, string place)
+        {if(string.IsNullOrEmpty(id)||string.IsNullOrEmpty(place)){
+
+                return "No se pudo agendar la consulta";
             }
-
-            if (string.IsNullOrEmpty(id))
+            else
             {
-                stringBuilder.Append("Unable to schedule appointment, 'id' is required\n");
-                isValid = false;
+                return "Añadido correctamente";
             }
-
-            if (string.IsNullOrEmpty(phoneNumber))
-            {
-                stringBuilder.Append("Unable to schedule appointment, 'phone number' is required\n");
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(appoinmentPlace))
-            {
-                stringBuilder.Append("Unable to schedule appointment, 'appoinment place' is required\n");
-                isValid = false;
-            }
-
-
-            if (string.IsNullOrEmpty(doctorName))
-            {
-                stringBuilder.Append("Unable to schedule appointment, 'doctor name' is required\n");
-                isValid = false;
-            }
-
-            if (isValid)
-            {
-                stringBuilder.Append("Appoinment scheduled");
-            }
-
-            return stringBuilder.ToString();
+    
         }
 
     }
 }
+
+/*Inicialmente podemos decir que este código no cumple con el principio SRP ya que esta clase no cuenta con una funcionalidad única,
+sino que más bien podría recibir cambios por diferentes factores*/
