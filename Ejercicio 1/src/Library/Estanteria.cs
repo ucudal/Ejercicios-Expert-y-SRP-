@@ -22,4 +22,3 @@ namespace SRP
         }
     }
 }
-//Crear nueva clase con una lista de estanterías
